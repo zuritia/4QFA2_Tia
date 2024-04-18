@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Generator Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>Enter a number between 2 and 10:</p>
+    </br>
+    <input type="text" id="start" name="start">
+    <span>by</span>
+    <input type="text" id="end" name="end">
+    </br></br>
+    <button onclick="generateTable();">click here when done</button>
+    </br></br>
+
+    <div id="tablecontainer"></div>
+
+    <script>
+
+        function check(x,y)
+        {
+            x = document.getElementById("start").value;
+            y = document.getElementById("end").value;
+        
+            if (x > 10 || y > 10 || x < 2 || y < 2) {
+                alert("please enter numbers between 2 and 10");
+                return false;
+            }
+            return true;
+        }
+
+        function generateTable()
+        {
+            var a = document.getElementById("start").value;
+            var b = document.getElementById("end").value;
+            if (!check(a, b)) {
+                return; 
+            }
+            
+            document.getElementById("tablecontainer").innerHTML = "";
+
+            var table = "<table>";
+            for (counter1 = 1; counter1 <= a; counter1++) { 
+                table += "<tr>";
+                for (counter2 = 1; counter2 <= b; counter2++) { 
+                    table += "<td>" + (counter1 * counter2) + "</td>";
+                }
+                table += "</tr>";       
+            }
+            table += "</table>";
+
+            document.getElementById("tablecontainer").innerHTML = table;
+                
+        }        
+    </script>
+</body>
+</html>
